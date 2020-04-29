@@ -1,0 +1,28 @@
+{
+  "name": "mhpackage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mufaddalhamidofficial/MHPackage.git"
+  },
+  "keywords": [
+    "React"
+  ],
+  "author": "Mufaddal Hamid",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mufaddalhamidofficial/MHPackage/issues"
+  },
+  "homepage": "https://github.com/mufaddalhamidofficial/MHPackage#readme",
+  "dependencies": {
+    "prop-types": "^15.7.2"
+  },
+  "devDependencies": {
+    "metro-react-native-babel-preset": "^0.59.0"
+  }
+}
