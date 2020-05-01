@@ -9,9 +9,16 @@ import PropTypes from 'prop-types'
 export default class FieldSet extends Component {
 
     render() {
+        let alignItems = this.props.labelPosition == 'center' ? 'center' : 'flex-' + this.props.labelPosition
+        if (this.props.twoLabel) {
+            alignItems = 'space-between'
+        }
         return (
             <View style={[styles.container, { borderColor: this.props.borderColor }]}>
-                <View style={[styles.labelView, { alignItems: this.props.labelPosition == 'center' ? 'center' : 'flex-' + this.props.labelPosition }]}><Text style={[styles.label, { backgroundColor: this.props.labelBackgroundColor, color: this.props.labelColor, fontSize: this.props.labelFontSize }, this.props.labelStyle]}> {this.props.label} </Text></View>
+                <View style={[styles.labelView, { alignItems }, this.props.twoLabel ? { alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between' } : {}]}>
+                    <Text style={[styles.label, { backgroundColor: this.props.labelBackgroundColor, color: this.props.labelColor, fontSize: this.props.labelFontSize }, this.props.labelStyle]}> {this.props.label} </Text>
+                    {this.props.twoLabel && <Text style={[styles.label, { backgroundColor: this.props.labelBackgroundColor, color: this.props.labelColor, fontSize: this.props.labelFontSize }, this.props.labelStyle, this.props.labelStyle2]}> {this.props.label2} </Text>}
+                </View>
                 <View style={{ flex: 1, justifyContent: 'center', paddingVertical: 10 }}>
                     <View style={styles.mainTextView}>{this.props.children}</View>
                 </View>
@@ -28,7 +35,10 @@ FieldSet.propTypes = {
     borderColor: PropTypes.string,
     labelFontSize: PropTypes.number,
     labelStyle: PropTypes.object,
-    labelPosition: PropTypes.oneOf(['start', 'center', 'end'])
+    labelPosition: PropTypes.oneOf(['start', 'center', 'end']),
+    twoLabel: PropTypes.bool,
+    label2: PropTypes.string,
+    labelStyle2: PropTypes.object,
 }
 
 FieldSet.defaultProps = {
@@ -39,7 +49,10 @@ FieldSet.defaultProps = {
     borderColor: '#777',
     labelFontSize: 11.4,
     labelStyle: {},
-    labelPosition: 'start'
+    labelPosition: 'start',
+    twoLabel: false,
+    label2: 'FieldSet 2nd label',
+    labelStyle2: {}
 }
 
 const styles = StyleSheet.create({
